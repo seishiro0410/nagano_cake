@@ -7,12 +7,12 @@
     <%= csp_meta_tag %>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
 
-<body class="d-flex flex-column vh-100">
+<body>
     <header class="shadow-sm">
       <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container">
@@ -41,9 +41,22 @@
                <li>
                  <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
                </li>
-              <% else %>
+              <% elsif customer_signed_in? %>
                <li>
-                 Adout
+                マイページ
+               </li>
+               <li>
+                商品一覧
+               </li>
+               <li>
+                 カート
+               </li>
+               <li>
+                 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+               </li>
+               <% else %>
+               <li>
+                 <%= link_to "About", about_path %>
                </li>
 
                <li>
@@ -55,19 +68,21 @@
                </li>
 
                <li>
-                 <%= link_to "ログイン", new_admin_session_path %>
+                 <%= link_to "ログイン", new_customer_session_path %>
                </li>
 
               <% end %>
+
+
             </ul>
         </div>
       </nav>
     </header>
-  <body>
-    <%= yield %>
-  </body>
 
-  <footer class="bg-dark text-white pt-5 pb-4">
+    <%= yield %>
+
+
+    <footer class="bg-dark text-white pt-5 pb-4">
       <div class="container">
         <div class="row no-gutters">
 

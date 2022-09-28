@@ -1,0 +1,44 @@
+<main>
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-lg-7">
+            <div class="mv">
+                <%= image_tag 'pexels_53110.jpg', size: "500x300" %>
+                <div class="card-img-overlay">
+                    <p class="border p-3 mb-2 bg-light text-dark">
+                        ようこそ、ながのCAKEへ！<br>
+                        このサイトは、ケーキ販売のECサイトになります。<br>
+                        会員でない方も商品の閲覧はできますが<br>
+                        購入には会員登録が必要になります。
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="container mt-6">
+    <!--<div class="row">-->
+      <!--<div class="col-lg-4">-->
+         <h2>新着商品</h2>
+           <div class="list-wrap">
+           <% @items.each do |item| %>
+           <div class="list-box">
+
+           <% if item.image.attached? %>
+             <%= image_tag item.image, size: "200x150" %>
+           <% else %>
+             <%= image_tag 'no_image', size: "200x150" %>
+           <% end %><br>
+
+             <span class="list-body"><%= item.name %></span><br>
+             <span class="list-title">￥<%= item.price %></span>
+
+           </div>
+           <% end %>
+           </div>
+      <!--</div>-->
+    </div>
+<%= paginate @items %>
+
+</main>

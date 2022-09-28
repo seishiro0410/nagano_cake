@@ -1,0 +1,41 @@
+// Place all the styles related to the public/homes controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ main {
+  width: 930px;
+  margin: 0 auto;
+}
+
+.mv {
+  width: 200%; /* 横幅いっぱい */
+  height: 300px; /* 高さ300px */
+}
+
+// .border {
+//   width: 200%; /* 横幅いっぱい */
+//   height: 100px; /* 高さ300px */
+//   background-image: url(images/pexels-53110.jpg);}
+
+.list-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  // width: 600px;
+}
+
+.list-box {
+  width: 200px;
+  // height: 250px;
+  margin: 10px;
+}
+
+.list-comment {
+  width: 200px;
+}
+
+

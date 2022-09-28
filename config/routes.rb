@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  
+
+
+  namespace :public do
+
+  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -12,6 +16,22 @@ devise_for :customers,skip: [:passwords], controllers: {
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+
+
+
+  scope module: :public do
+    get 'homes/top'
+    root to: 'homes#top'
+    get '/about' => 'homes#about', as: 'about'
+
+    get 'customers/unsubscribe'
+    patch 'customers/withdraw'
+    get 'customers/mypage' => 'customers#show', as: 'customers/mypage'
+    get 'customers/mypage/edit' => 'customers#edit', as: 'customers/mypage/edit'
+    patch 'customers/mypage' => 'customers#update', as: 'customer_update'
+
+  end
 
 get 'admin/' => 'admin/homes#top', as: 'admin'
   namespace :admin do
