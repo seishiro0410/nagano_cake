@@ -1,9 +1,11 @@
 <p id="notice"></p>
 <div class="container">
-<h1>会員情報編集</h1>
+<%= @customer.first_name %><%= @customer.last_name %><p>さんの会員情報編集</p>
 
     <table>
-      <%= form_with model: @customer, url: customers_mypage_path do |f| %>
+      <%= form_with model: @customer, url: admin_customer_path do |f| %>
+        <tr><th>会員ID</th><td><%= @customer.id %></td></tr>
+
         <tr><th>氏名</th><td><%= f.text_field :first_name %></td><td><%= f.text_field :last_name %></td></tr>
 
         <tr><th>フリガナ</th><td><%= f.text_field :first_name_kana %></td><td><%= f.text_field :last_name_kana %></td></tr>
@@ -16,7 +18,15 @@
 
         <tr><th>メールアドレス</th><td><%= f.text_field :email %></td></tr>
 
-        <td><%= f.submit '編集内容を保存', class: "btn btn-success" %> <%= link_to '退会', customers_unsubscribe_path, class: "btn btn-danger" %></td>
+        <tr><th>販売ステータス</th>
+        <td><%= f.radio_button :is_deleted, "false" %>
+            <%= f.label :is_deleted, "有効" %>
+            <%= f.radio_button :is_deleted, "true" %>
+            <%= f.label :is_deleted, "退会" %>
+        </td></tr>
+
+        <td><%= f.submit '編集内容を保存', class: "btn btn-success" %></td>
       <% end %>
     </table>
 </div>
+

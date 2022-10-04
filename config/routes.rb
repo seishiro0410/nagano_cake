@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
 
-  namespace :public do
 
+
+
+  namespace :public do
+    get 'cart_items/index'
   end
 # 顧客用
 # URL /customers/sign_in ...
@@ -30,6 +33,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     get 'customers/mypage' => 'customers#show', as: 'customers/mypage'
     get 'customers/mypage/edit' => 'customers#edit', as: 'customers/mypage/edit'
     patch 'customers/mypage' => 'customers#update', as: 'customer_update'
+    resources :addresses, only: [:index, :create, :edit, :update, :destroy]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items/destroy_all'
 
   end
 
@@ -37,6 +44,7 @@ get 'admin/' => 'admin/homes#top', as: 'admin'
   namespace :admin do
     resources :genres, only: [:index, :create, :edit, :update]
     resources :items, only: [:new, :index, :create, :show, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,27 @@
+<p id="notice"></p>
+  <div class="container mt-6">
+    <!--<div class="row">-->
+      <!--<div class="col-lg-4">-->
+         <h2>商品一覧</h2>
+           <div class="list-wrap">
+           <% @items.each do |item| %>
+
+           <%= link_to item_path(item.id) do %>
+             <div class="list-box">
+
+             <% if item.image.attached? %>
+               <%= image_tag item.image, size: "200x150" %>
+             <% else %>
+               <%= image_tag 'no_image', size: "200x150" %>
+             <% end %><br>
+           <% end %>
+
+             <span class="list-body"><%= item.name %></span><br>
+             <span class="list-title">￥<%= item.price %></span>
+
+           </div>
+           <% end %>
+           </div>
+        <%= paginate @items %>
+      <!--</div>-->
+    </div>

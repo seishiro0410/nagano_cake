@@ -1,0 +1,22 @@
+<p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <h1></h1>
+        <div class="col-lg-4">
+          <%= image_tag @item.get_image, size: "300x200" %>
+        </div>
+
+        <div class="col-lg-8">
+          <div><%= @item.name %></div>
+          <div><%= @item.introduction %></div>
+          <div>￥<%= @item.price %>（税込）</div>
+          <div>
+            <%= form_with model: @cartitem, url: cart_items_path do |f| %>
+              <%= f.select :amount, [['1', 1], ['2', 2], ['3', 3], ['4', 4]], { include_blank: true, selected: 1 }, { id: "item_id", class: "cart_item_class" } %>
+              <%= f.submit 'カートに入れる', class: "btn btn-success" %>
+            <% end %>
+
+          </div>
+        </div>
+    </div>
+  </div>

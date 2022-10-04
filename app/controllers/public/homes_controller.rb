@@ -1,7 +1,7 @@
 class Public::HomesController < ApplicationController
   def top
     @item = Item.new
-    @items = Item.page(params[:page])
+    @items = Item.page(params[:page]).per(4)
   end
 
   def about
