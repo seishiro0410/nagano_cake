@@ -4,9 +4,6 @@ Rails.application.routes.draw do
 
 
 
-  namespace :public do
-    get 'cart_items/index'
-  end
 # 顧客用
 # URL /customers/sign_in ...
 devise_for :customers,skip: [:passwords], controllers: {
@@ -35,9 +32,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     patch 'customers/mypage' => 'customers#update', as: 'customer_update'
     resources :addresses, only: [:index, :create, :edit, :update, :destroy]
     resources :items, only: [:index, :show]
-    resources :cart_items, only: [:index, :create, :update, :destroy]
     delete 'cart_items/destroy_all'
-
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :orders, only: [:new, :create, :index, :show]
+    get 'orders/thanx'
   end
 
 get 'admin/' => 'admin/homes#top', as: 'admin'
