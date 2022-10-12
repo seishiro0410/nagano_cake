@@ -34,8 +34,10 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     resources :items, only: [:index, :show]
     delete 'cart_items/destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :orders, only: [:new, :create, :index, :show]
+
     get 'orders/thanx'
+    resources :orders, only: [:new, :create, :index, :show]
+    post 'orders/information'
   end
 
 get 'admin/' => 'admin/homes#top', as: 'admin'
