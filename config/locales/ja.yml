@@ -7,9 +7,16 @@ ja:
 
       status:
         wait: "入金待ち"
-        confirmation1: "入金確認"
+        confirmation: "入金確認"
         production: "製作中"
         preparation: "発送準備中"
-        send: "発送済み"
+        sending: "発送済み"
+
+    order_detail:
+      is_production:
+        impossible: "製作不可"
+        waiting: "製作待ち"
+        can: "製作中"
+        complete: "製作完了"
 
 

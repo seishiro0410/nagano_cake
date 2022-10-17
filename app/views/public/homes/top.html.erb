@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-lg-7">
             <div class="mv">
-                <%= image_tag 'pexels_53110.jpg', size: "500x300" %>
+                <%= image_tag 'pexels_53110.jpg', size: "700x300" %>
                 <div class="card-img-overlay">
                     <p class="border p-3 mb-2 bg-light text-dark">
                         ようこそ、ながのCAKEへ！<br>
@@ -23,22 +23,23 @@
          <h2>新着商品</h2>
            <div class="list-wrap">
            <% @items.each do |item| %>
-           <div class="list-box">
+             <%= link_to item_path(item.id) do %>
+               <div class="list-box">
 
-           <% if item.image.attached? %>
-             <%= image_tag item.image, size: "200x150" %>
-           <% else %>
-             <%= image_tag 'no_image', size: "200x150" %>
-           <% end %><br>
-
+               <% if item.image.attached? %>
+                 <%= image_tag item.image, size: "200x150" %>
+               <% else %>
+                 <%= image_tag 'no_image', size: "200x150" %>
+               <% end %><br>
+              <% end %>
              <span class="list-body"><%= item.name %></span><br>
              <span class="list-title">￥<%= item.price %></span>
-
            </div>
            <% end %>
+           <%= link_to "全ての商品を見る＞", items_path %>
            </div>
       </div>
     </div>
-<%= paginate @items %>
+
 
 </main>

@@ -36,7 +36,7 @@ class Public::OrdersController < ApplicationController
       @order_detail.order_id = @order.id
       @order_detail.item_id = cart_item.item_id
       @order_detail.purchase_quantity = cart_item.amount
-      @order_detail.tax_included_price = cart_item.item.price
+      @order_detail.tax_included_price = (cart_item.item.price * 1.1).floor
       @order_detail.save
     end
 
@@ -49,6 +49,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order.postage = 800
+    @total_amount = 0
+    @order_details = @order.order_details
   end
 
   private

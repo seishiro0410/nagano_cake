@@ -1,1 +1,42 @@
-<h1>Homes#top</h1>
+<p id="notice"></p>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <h3 class="text-blank bg-active">注文履歴一覧</h3>
+      </div>
+    </div>
+
+    <div class ="row">
+      <div class="col-md-9">
+        <table class = "table table-bordered" >
+
+          <thead>
+            <tr>
+                <th class="table-active">購入日時</th>
+                <th class="table-active">購入者</th>
+                <th class="table-active">注文個数</th>
+                <th class="table-active">注文ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td><%= order.created_at.to_s(:datetime_jp) %></td>
+                <td>
+                  <% name = order.customer.first_name.to_s + order.customer.last_name.to_s %>
+                  <%= link_to name, admin_order_path(order.id) %>
+                </td>
+                <td><%= order.order_details.sum(:purchase_quantity) %></td>
+                <td><%= order.status_i18n %></td>
+              </tr>
+            <% end %>
+          </tbody>
+
+        </table>
+      </div>
+      </div>
+      <%= paginate @orders %>
+
+
+  </div>
+
