@@ -1,15 +1,17 @@
 <p id="notice"></p>
   <div class="container">
     <div class="row">
-      <div class="col-lg-5">
+      <div class="col-md-6 offset-2">
         <h1>商品詳細</h1>
       </div>
     </div>
 
-    <div class="row g-12 center">
-      <%= image_tag @item.get_image,size: "200x150" %>
-      <div class="col-lg-9">
-        <table>
+    <div class="row">
+      <div class="col-md-3 py-3 offset-2">
+        <%= image_tag @item.get_image,size: "200x150" %>
+      </div>
+      <div class="col-md-6">
+        <table class="table table-borderless">
 
           <tr><th>商品名</th><td><%= @item.name %></td></tr>
 
@@ -26,9 +28,12 @@
                   販売停止中
                 <% end %>
           </td></tr>
-          <td><%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
-          </td>
         </table>
+
+        <div class="col text-center py-6">
+          <%= link_to '編集する', edit_admin_item_path(@item.id), class: "btn btn-success" %>
+        </div>
+        <p></p>
       </div>
     </div>
   </div>
