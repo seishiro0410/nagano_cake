@@ -5,56 +5,73 @@
         <h4>注文情報入力</h4>
       </div>
     </div>
-
+    <p></p>
     <div class="row">
       <div class="col-md-6">
         <h4>支払方法</h4>
+      </div>
+      <div class="col-md-11 offset-1">
         <%= form_with model: @order, url: orders_information_path do |f| %>
           <%= f.radio_button :method_of_payment, Order.method_of_payments.key(0) %>
           <%= f.label :method_of_payment, Order.method_of_payments_i18n[:credit_card] %><br>
-
+      </div>
+      <div class="col-md-11 offset-1">
           <%= f.radio_button :method_of_payment, Order.method_of_payments.key(1) %>
           <%= f.label :method_of_payment, Order.method_of_payments_i18n[:transfer] %>
-
       </div>
     </div>
+    <p></p>
 
     <div class="row">
       <div class="col-md-12">
         <h4>お届け先</h4>
+      </div>
 
+      <div class="col-md-11 offset-1">
             <%= f.radio_button :select_address, "0" %>
             <%= f.label "ご自身の住所" %><br>
             〒<%= current_customer.postal_code %><%= current_customer.address %><br>
             <%= current_customer.first_name + current_customer.last_name %><br>
+      </div>
+      <p></p>
+      <p></p>
             <%#= current_customer.name %>
-
+      <div class="col-md-11 offset-1">
             <%= f.radio_button :select_address, "1" %>
             <%= f.label "登録済みの住所から選択" %><br>
             <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %><br>
-
+      </div>
+      <p></p>
+      <div class="col-md-11 offset-1">
             <%= f.radio_button :select_address, "2" %>
             <%= f.label "新しい住所" %><br>
+      </div>
+      <div class="col-md-3 py-1 offset-1">
+        郵便番号（ハイフンなし）
+      </div>
+      <div class="col-md-8 py-1">
+        <%= f.text_field :shipping_postal_code, :placeholder => "0000000" %>
+      </div>
+      <div class="col-md-3 py-1 offset-1">
+        住所
+      </div>
+      <div class="col-md-8 py-1">
+        <%= f.text_field :shipping_address, :placeholder => "熊本市東区", class:"w-75" %>
+      </div>
+      <div class="col-md-3 py-1 offset-1">
+        宛名
+      </div>
+      <div class="col-md-8 py-1">
+        <%= f.text_field :shipping_name, :placeholder => "○○太郎" %>
+      </div>
 
-            <table>
-              <tr>
-                <th>郵便番号（ハイフンなし）</th>
-                <td><%= f.text_field :shipping_postal_code, :placeholder => "0000000" %></td>
-              </tr>
-              <tr>
-                <th>住所</th>
-                <td><%= f.text_field :shipping_address, :placeholder => "熊本市東区" %></td>
-              </tr>
-              <tr>
-                <th>宛名</th>
-                <td><%= f.text_field :shipping_name, :placeholder => "○○太郎" %></td>
-              </tr>
-
-            </table>
-            <div class="actions-center">
+  
+            <div class="col-md-12 text-center">
               <td><%= f.submit '確認画面へ進む', class: "btn btn-primary" %></td>
             </div>
+            
           <% end %>
+          <p></p>
       </div>
     </div>
 

@@ -28,7 +28,7 @@
         <table class="table table-bordered" >
           <tr><th class="table-active">商品合計</th>
           <td>
-            <% @total_amount = @order.postage.to_i + @order.billing_amount.to_i %>
+            <% @total_amount = @order.billing_amount.to_i - @order.postage.to_i %>
             <%= @total_amount %>
           </td>
           </tr>

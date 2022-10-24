@@ -20,6 +20,7 @@ class Public::SessionsController < Devise::SessionsController
       redirect_to new_customer_registration_path
     end
   end
+  
   # GET /resource/sign_in
   # def new
   #   super

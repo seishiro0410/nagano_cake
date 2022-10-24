@@ -1,45 +1,75 @@
 <p id="notice"></p>
   <div class="container">
     <div class="row">
-      <div class="col-md-5">
+      <div class="col-md-9">
         <%= @customer.first_name %><%= @customer.last_name %><p>さんの会員詳細</p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-7">
-      <table>
-
-      <tr><th>会員ID</th><td><%= @customer.id %></td></tr>
-
-      <tr><th>氏名</th><td><%= @customer.first_name %><%= @customer.last_name %></td></tr>
-
-      <tr><th>カナ</th><td><%= @customer.first_name_kana %><%= @customer.last_name_kana %></td></tr>
-
-      <tr><th>郵便番号</th><td><%= @customer.postal_code %></td></tr>
-
-      <tr><th>住所</th><td><%= @customer.address %></td></tr>
-
-      <tr><th>電話番号</th><td><%= @customer.telephone_number %></td></tr>
-
-      <tr><th>メールアドレス</th><td><%= @customer.email %></td></tr>
-
-      <tr><th>会員ステータス</th><td>
+      <div class="col-md-2 py-3 offset-1">
+        会員ID
+      </div>
+      <div class="col-md-9 py-3">
+        <%= @customer.id %>
+      </div>
+      <div class="col-md-2 py-3 offset-1">
+        氏名
+      </div>
+      <div class="col-md-9 py-3">
+        <%= @customer.first_name %><%= @customer.last_name %>
+      </div>
+      <div class="col-md-2 py-3 offset-1">
+        カナ
+      </div>
+      <div class="col-md-9 py-3">
+        <%= @customer.first_name_kana %><%= @customer.last_name_kana %>
+      </div>
+      <div class="col-md-2 py-3 offset-1">
+        郵便番号
+      </div>
+      <div class="col-md-9 py-3">
+        <%= @customer.postal_code %>
+      </div>
+      <div class="col-md-2 py-3 offset-1">
+        住所
+      </div>
+      <div class="col-md-9 py-3">
+        <%= @customer.address %>
+       </div>
+      <div class="col-md-2 py-3 offset-1">
+        電話番号
+      </div>
+      <div class="col-md-9 py-3">
+        <%= @customer.telephone_number %>
+      </div>
+      <div class="col-md-2 py-3 offset-1">
+        メールアドレス
+       </div>
+      <div class="col-md-9 py-3">
+        <%= @customer.email %>
+      </div>
+      <div class="col-md-2 py-3 offset-1">
+        会員ステータス
+      </div>
+      <div class="col-md-9 py-3">
         <% if @customer.is_deleted == true %>
           無効
         <% elsif @customer.is_deleted == false %>
           <font color="green">有効</font>
-        <% end %></td></tr>
-
-    </table>
-    </div>
+        <% end %>
+      </div>
     </div>
 
-    <p><%= link_to '編集する', edit_admin_customer_path, class: "btn btn-success" %></p>
-    <p><%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-success" %></p>
-
-
-
+    <div class="row">
+      <div class="col-md-2 offset-1">
+        <%= link_to '編集する', edit_admin_customer_path, class: "btn btn-success" %>
+      </div>
+      <div class="col-md-8">
+        <%= link_to '注文履歴一覧を見る', admin_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+    <p></p>
 
 
   </div>

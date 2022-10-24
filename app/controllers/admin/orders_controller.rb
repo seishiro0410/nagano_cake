@@ -9,8 +9,15 @@ class Admin::OrdersController < ApplicationController
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
-    redirect_to admin_order_path(@order.id)
+    if @order.update(order_params)
+      # binding.pry
+       @order.order_details.update_all(is_production: 1) if @order.status == "confirmation"
+       redirect_to admin_order_path(@order.id)
+    else
+       redirect_to admin_order_path(@order.id)
+    end
   end
+
 
   private
 

@@ -6,11 +6,18 @@
       </div>
     </div>
 
+    <p></p>
+
     <div class="row">
-      <div class="col-md-6">
-        <div class="font-large">登録情報    <%= link_to '編集する', customers_mypage_edit_path(@customer), class: "btn btn-success" %></div>
+      <div class="col-md-2">
+        登録情報
+      </div>
+      <div class="col-md-10">
+      <%= link_to '編集する', customers_mypage_edit_path(@customer), class: "btn btn-success" %>
       </div>
     </div>
+
+    <p></p>
 
     <div class="row">
       <div class="col-md-6">
@@ -26,16 +33,26 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6">
-        <p class="fs-1" >配送先   <%= link_to "一覧をみる", addresses_path, class: "btn btn-primary" %></p>
+      <div class="col-md-2">
+        配送先
+      </div>
+      <div class="col-md-10">
+      <%= link_to "一覧をみる", addresses_path, class: "btn btn-primary" %>
       </div>
     </div>
 
+      <p></p>
+
     <div class="row">
-      <div class="col-md-6">
-        <p class="fw-bold"></p>注文履歴    <%= link_to "一覧をみる", orders_path, class: "btn btn-primary" %></p>
+      <div class="col-md-2">
+        注文履歴
+      </div>
+      <div class="col-md-10">
+        <%= link_to "一覧をみる", orders_path, class: "btn btn-primary" %>
       </div>
     </div>
+
+      <p></p>
 
 
   </div>
